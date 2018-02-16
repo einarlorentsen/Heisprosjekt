@@ -12,7 +12,7 @@
 
 
 /**
-  Initialize elevator.
+  Initialize elevator. Setter alle lys av. 
   @return Non-zero on success, 0 on failure.
 */
 int elev_init(void);
