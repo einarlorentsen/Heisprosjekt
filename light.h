@@ -1,4 +1,4 @@
-#inlcude "elev.h"
+#include "elev.h"
 #include "io.h"
 #include "channels.h"
 
