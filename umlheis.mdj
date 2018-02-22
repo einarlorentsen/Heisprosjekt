@@ -318,7 +318,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setNåværendeEtasje()",
+											"text": "+huskEtasje()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2272,7 +2272,7 @@
 									"containerExtending": false,
 									"left": 302,
 									"top": 325,
-									"width": 8,
+									"width": 8.22021484375,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.5235987755982988,
@@ -2375,7 +2375,7 @@
 									"containerExtending": false,
 									"left": 437,
 									"top": 325,
-									"width": 8,
+									"width": 8.22021484375,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.5235987755982988,
@@ -3515,7 +3515,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+start_timer()",
+											"text": "+setTimer(): time_h",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3544,7 +3544,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+set_timer()",
+											"text": "+timerFerdig(): int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4697,7 +4697,7 @@
 									"containerExtending": false,
 									"left": 540,
 									"top": 467,
-									"width": 22,
+									"width": 22.7119140625,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.5235987755982988,
@@ -4800,7 +4800,7 @@
 									"containerExtending": false,
 									"left": 540,
 									"top": 415,
-									"width": 22,
+									"width": 22.7119140625,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.5235987755982988,
@@ -5050,7 +5050,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdbbyo5yfB8w="
 							},
-							"name": "setNåværendeEtasje",
+							"name": "huskEtasje",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5686,10 +5686,27 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdevOZsHYRTk="
 							},
-							"name": "start_timer",
+							"name": "setTimer",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFhveTj5m5bNV4=",
+									"_parent": {
+										"$ref": "AAAAAAFhdex9QcPAPMI="
+									},
+									"visibility": "public",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": "time_h",
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"direction": "return"
+								}
+							],
 							"concurrency": "sequential",
 							"isQuery": false,
 							"isAbstract": false
@@ -5700,10 +5717,27 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdevOZsHYRTk="
 							},
-							"name": "set_timer",
+							"name": "timerFerdig",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFhveTR0W3vuhU=",
+									"_parent": {
+										"$ref": "AAAAAAFhdeyzo8RjJUI="
+									},
+									"visibility": "public",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": "int",
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"direction": "return"
+								}
+							],
 							"concurrency": "sequential",
 							"isQuery": false,
 							"isAbstract": false
