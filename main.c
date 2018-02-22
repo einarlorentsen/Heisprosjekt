@@ -1,4 +1,12 @@
 #include "elev.h"
+#include "doors.h"
+#include "channels.h"
+#include "elevator.h"
+#include "elevatorControl.h"
+#include "io.h"
+#include "light.h"
+#include "queue.h"
+#include "timer.h"
 #include <stdio.h>
 
 
@@ -20,6 +28,7 @@ int main() {
         } else if (elev_get_floor_sensor_signal() == 0) {
             elev_set_motor_direction(DIRN_UP);
         }
+	lightsOn();
 
         // Stop elevator and exit program if the stop button is pressed
         if (elev_get_stop_signal()) {

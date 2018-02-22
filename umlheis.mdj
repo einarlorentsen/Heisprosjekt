@@ -234,7 +234,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+nåværende_etasje: int",
+											"text": "+naavaerende_etasje: int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -289,7 +289,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+kjørStopp()",
+											"text": "+kjorStopp()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -347,7 +347,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+nødstopp()",
+											"text": "+nodstopp()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -872,7 +872,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Dører",
+											"text": "Dorer",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -990,7 +990,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+åpen: boolean",
+											"text": "+aapen: boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1045,7 +1045,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+åpne()",
+											"text": "+aapne()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1903,7 +1903,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+skru_på_lys()",
+											"text": "+skru_paa_lys()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2561,7 +2561,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Kø",
+											"text": "Ko",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2679,7 +2679,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+tom_kø: boolean = 1",
+											"text": "+tom_ko: boolean = 1",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2708,7 +2708,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+kø: array",
+											"text": "+ko: array",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2763,7 +2763,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+gå_igjennom_kø()",
+											"text": "+gaa_igjennom_ko()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2792,7 +2792,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+slett_fra_kø()",
+											"text": "+slett_fra_ko()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2821,7 +2821,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+legg_til_i_kø()",
+											"text": "+legg_til_i_ko()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2850,7 +2850,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+tøm_kø()",
+											"text": "+tom_ko()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4956,7 +4956,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdbbyo5yfB8w="
 							},
-							"name": "nåværende_etasje",
+							"name": "naavaerende_etasje",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -4976,7 +4976,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdbbyo5yfB8w="
 							},
-							"name": "kjørStopp",
+							"name": "kjorStopp",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5004,7 +5004,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdbbyo5yfB8w="
 							},
-							"name": "nødstopp",
+							"name": "nodstopp",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5075,7 +5075,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Dører",
+					"name": "Dorer",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -5131,7 +5131,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdcOuz5/JESs="
 							},
-							"name": "åpen",
+							"name": "aapen",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5151,7 +5151,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdcOuz5/JESs="
 							},
-							"name": "åpne",
+							"name": "aapne",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5299,7 +5299,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdctF/aLInok="
 							},
-							"name": "skru_på_lys",
+							"name": "skru_paa_lys",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5347,7 +5347,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Kø",
+					"name": "Ko",
 					"ownedElements": [
 						{
 							"_type": "UMLDependency",
@@ -5431,7 +5431,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "tom_kø",
+							"name": "tom_ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5450,7 +5450,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "kø",
+							"name": "ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5470,7 +5470,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "gå_igjennom_kø",
+							"name": "gaa_igjennom_ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5484,7 +5484,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "slett_fra_kø",
+							"name": "slett_fra_ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5498,7 +5498,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "legg_til_i_kø",
+							"name": "legg_til_i_ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -5512,7 +5512,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhdeVBMrVBX/8="
 							},
-							"name": "tøm_kø",
+							"name": "tom_ko",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,

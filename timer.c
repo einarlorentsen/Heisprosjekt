@@ -3,15 +3,15 @@
 #include <timer.h>
 
 
-time_h setTimer(int tid) {
-	time_h seconds = time(NULL)+tid;
+time_h setTimer(int setTime) {
+	time_h seconds = time(NULL)+setTime;
 	return seconds;
 }
 
 
-int timerFerdig(time_h seconds){
-	time_h = nåværendeTid;
-	if (seconds - nåværendeTid = 0 || seconds - nåværendeTid < 0) {
+int timerFinished(time_h seconds){
+	time_h = presentTime;
+	if (seconds - presentTime == 0 || seconds - presentTime < 0) {
 		return 1;
 	}
 	else {

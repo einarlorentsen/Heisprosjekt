@@ -806,7 +806,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "Dører",
+													"text": "Dorer",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -1008,7 +1008,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "Kø",
+													"text": "Ko",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -1726,7 +1726,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "3 : Update kø og hent",
+											"text": "3 : Update ko og hent",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1896,7 +1896,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "4 : Lukk dør og lukkebekreftelse",
+											"text": "4 : Lukk dor og lukkebekreftelse",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2066,7 +2066,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "5 : Kjør til 1.",
+											"text": "5 : Kjor til 1.",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2746,7 +2746,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "9 : Update kø",
+											"text": "9 : Update ko",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2916,7 +2916,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "10 : Åpne dør",
+											"text": "10 : aapne dor",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3086,7 +3086,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "11 : Set Timer og beskjed når ferdig",
+											"text": "11 : Set Timer og beskjed naar ferdig",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3256,7 +3256,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "12 : Lukk og beskjed når lukket",
+											"text": "12 : Lukk og beskjed naar lukket",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3766,7 +3766,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "15 : Update kø",
+											"text": "15 : Update ko",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3936,7 +3936,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "16 : Kjør til 3.",
+											"text": "16 : Kjor til 3.",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4616,7 +4616,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "20 : Update kø",
+											"text": "20 : Update ko",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4786,7 +4786,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "21 : Åpne dør",
+											"text": "21 : aapne dor",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5135,7 +5135,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Update kø og hent",
+							"name": "Update ko og hent",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5152,7 +5152,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Lukk dør og lukkebekreftelse",
+							"name": "Lukk dor og lukkebekreftelse",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5169,7 +5169,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Kjør til 1.",
+							"name": "Kjor til 1.",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5237,7 +5237,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Update kø",
+							"name": "Update ko",
 							"source": {
 								"$ref": "AAAAAAFhd1MBssPDKes="
 							},
@@ -5254,7 +5254,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Åpne dør",
+							"name": "aapne dor",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5271,7 +5271,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Set Timer og beskjed når ferdig",
+							"name": "Set Timer og beskjed naar ferdig",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5288,7 +5288,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Lukk og beskjed når lukket",
+							"name": "Lukk og beskjed naar lukket",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5339,7 +5339,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Update kø",
+							"name": "Update ko",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5356,7 +5356,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Kjør til 3.",
+							"name": "Kjor til 3.",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5424,7 +5424,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Update kø",
+							"name": "Update ko",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5441,7 +5441,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Åpne dør",
+							"name": "aapne dor",
 							"source": {
 								"$ref": "AAAAAAFhd1K3d8Oi1W0="
 							},
@@ -5516,7 +5516,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Dører",
+							"name": "Dorer",
 							"visibility": "public",
 							"represent": {
 								"$ref": "AAAAAAFhd1Mw78Pjdrg="
@@ -5529,7 +5529,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhd1IzQ8NwkDQ="
 							},
-							"name": "Kø",
+							"name": "Ko",
 							"visibility": "public",
 							"represent": {
 								"$ref": "AAAAAAFhd1NiXcQEz7k="

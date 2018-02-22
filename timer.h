@@ -2,7 +2,7 @@
 #include <time.h>
 
 //Setter timeren
-void time_h setTimer(int tid);
+void time_h setTimer(int time);
 
 //Sjekker om timer er ferdig
-int timerFerdig(time_h seconds);
+int timerFinished(time_h seconds);
