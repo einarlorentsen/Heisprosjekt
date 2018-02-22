@@ -2,6 +2,7 @@
 #include "io.h"
 #include "elev.h"
 #include "channels.h"
+#include "kø.h"
 
 #include <comedilib.h>
 
@@ -18,9 +19,22 @@ void obstruksjonLys() {
 	elev_set_stop_lamp(elev_get_obstruction_signal()); //Skur på stoppknappen hvis det kommer en obstruksjon
 }
 
+void settPåLys() {
+	int etasjeOpp = sjekkKnappOpp();
+	int etasjeNed = sjekkKnappNed();
+	if (etasjeOpp != 0) {
+		elev_set_button_lamp(BUTTON_CALL_UP,etasjeOpp,1);
+	}
+	if (etasjeNed != 0) {
+		elev_set_button_lamp(BUTTON_CALL_DOWN, etasjeNed, 1);
+	}
+}
+
+void settAvLys()
+
 void lys(elev_button_type_t oppEllerNed, int bestilling, int stopp) {//Tanken er at når en kar trykker på en bestillingsknapp får vi vite gjennom bestilling hvilken etasje han vil til
 	int etasje = huskEtasje();                                      //og gjennom oppOgNed hvilken vei han vil. Vet ikke om stopp skal være "int", se mer info om stopp i if-setningen
-	int knappTrykk = elev_get_button_signal(oppEllerNed, etasje);
+	int knappTrykk = elev_get_button_signal(oppEllerNed, bestilling);
 	obstruksjonLys();
 	elev_set_button_lamp(oppEllerNed, bestilling, 1); //Skrur på bestillingsknappene
 	if (etasje == bestilling && stopp) { //Må sjekke om heisen også skal stoppe, siden hvis heisen bare passerer, men ikke skal stoppe kan vi ikke skru av lampa

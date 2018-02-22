@@ -27,10 +27,10 @@ void heisKø(int heiskø) {
 	int etasjeOpp = sjekkKnappOpp();
 	int etasjeNed = sjekkKnappNed();
 	if (etasjeOpp != 0) {
-		heiskø[etasjeOpp][BUTTON_CALL_UP];
+		heiskø[etasjeOpp][BUTTON_CALL_UP] = 1;
 	}
 	if (etasjeNed != 0) {
-		heiskø[etasjeNed][BUTTON_CALL_DOWN];
+		heiskø[etasjeNed][BUTTON_CALL_DOWN] = 1;
 	}
 }
 
