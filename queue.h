@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include "elev.h"
 
 int checkButtonUp();
 int checkButtonDown();
-void makeElevatorQueue(int elevatorQueue);
-void checkStop(int elevatorQueue, elev_motor_direction_t elevatorDirection, int floor);
+void makeElevatorQueue(int elevatorQueue[3][4]);
+void checkStop(int elevatorQueue[3][4], elev_motor_direction_t elevatorDirection, int floor);
