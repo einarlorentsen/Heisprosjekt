@@ -13,6 +13,7 @@ int checkButtonUp() {
 }
 
 int checkButtonDown() {
+	//printf("test...\n");
 	for (int i = 1; i < 4; i++) {
 		int success = elev_get_button_signal(BUTTON_CALL_DOWN, i);
 		if (success == 1) {

@@ -8,6 +8,7 @@
 #include "io.h"
 #include "channels.h"
 
+#include <stdio.h>
 #include <comedilib.h>
 
 

@@ -7,6 +7,7 @@
 #include "channels.h"
 #include "elev.h"
 #include "io.h"
+#include <stdio.h>
 
 #include <assert.h>
 #include <stdlib.h>
@@ -30,7 +31,9 @@ static const int button_channel_matrix[N_FLOORS][N_BUTTONS] = {
 };
 
 int elev_init(void) {
+  printf("test\n");
     int i;
+    printf("trigger elev init \n");
 
     // Init hardware
     if (!io_init())

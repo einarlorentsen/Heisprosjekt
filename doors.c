@@ -2,12 +2,13 @@
 #include "elev.h"
 #include <stdbool.h>
 
-void open() {
+void openDoor() {
+	printf("fuck yea\n");
 	elev_set_door_open_lamp(1);
 	bool bool_open = 1;
 }
 
-void close() {
+void closeDoor() {
 	elev_set_door_open_lamp(0);
 	bool bool_open = 0;
 }

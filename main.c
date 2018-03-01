@@ -13,8 +13,10 @@
 
 int main() {
     // Initialize hardware
+    printf("started main\n");
+    elev_init();
     if (!elev_init()) {
-        printf("Unable to initialize elevator hardware!\n");
+        printf("Unable to initialize elevator hardware...!\n");
         return 1;
     }
 
@@ -29,6 +31,9 @@ int main() {
         } else if (elev_get_floor_sensor_signal() == 0) {
             elev_set_motor_direction(DIRN_UP);
         }
+
+        checkButtonDown();
+        openDoor();
 
         // Stop elevator and exit program if the stop button is pressed
         if (elev_get_stop_signal()) {
