@@ -3,7 +3,6 @@
 #include <stdbool.h>
 
 void openDoor() {
-	printf("fuck yea\n");
 	elev_set_door_open_lamp(1);
 	bool bool_open = 1;
 }

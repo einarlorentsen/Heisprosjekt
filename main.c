@@ -11,6 +11,7 @@
 #include <stdio.h>
 
 
+
 int main() {
     // Initialize hardware
     printf("started main\n");
@@ -22,7 +23,9 @@ int main() {
 
     printf("Press STOP button to stop elevator and exit program.\n");
 
-    elev_set_motor_direction(DIRN_UP);
+    //Setter noen globale variabler
+    elev_motor_direction_t elevatorDirection = DIRN_UP; //Dette er for å ha en global variabel som vi kan endre utover i programmet.
+    elev_set_motor_direction(elevatorDirection);
 
     while (1) {
         // Change direction when we reach top/bottom floor
@@ -32,8 +35,18 @@ int main() {
             elev_set_motor_direction(DIRN_UP);
         }
 
-        checkButtonDown();
-        openDoor();
+        //Starten på vårt program
+        int sensedFloor = lastFloorSensed(); //Får ut den siste etasjen vi har vært i
+
+        updateElevatorQueue(initializaElevatorQueue);
+        int whereToStop = elevatorStop(initializaElevatorQueue,elevatorDirection, sensedFloor);
+        checkStop(initializaElevatorQueue,elevatorDirection,whereToStop);
+        time_t startStopTime = stopTheElevator(initializaElevatorQueue,elevatorDirection,sensedFloor);
+        if (timerFinished(startStopTime) == 1){
+          closeDoor();
+          elev_set_motor_direction(elevatorDirection);
+        }
+
 
         // Stop elevator and exit program if the stop button is pressed
         if (elev_get_stop_signal()) {

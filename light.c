@@ -7,17 +7,17 @@
 #include <comedilib.h>
 
 void obstructionLight() {
-	elev_set_stop_lamp(elev_get_stop_signal()); //Skrur på stopknappen hvis knappen er trykket inn
-	elev_set_stop_lamp(elev_get_obstruction_signal()); //Skur på stoppknappen hvis det kommer en obstruksjon
+	elev_set_stop_lamp(elev_get_stop_signal()); //Skrur pï¿½ stopknappen hvis knappen er trykket inn
+	elev_set_stop_lamp(elev_get_obstruction_signal()); //Skur pï¿½ stoppknappen hvis det kommer en obstruksjon
 }
 
 void lightsOn() {
-	int floorUp = checkButtonUp();
-	int floorDown = checkButtonDown();
-	if (floorUp != 0) {
+	int floorUp = checkFloorButtonUp();
+	int floorDown = checkFloorButtonDown();
+	if (floorUp != -1) {
 		elev_set_button_lamp(BUTTON_CALL_UP,floorUp,1);
 	}
-	if (floorDown != 0) {
+	if (floorDown != -1) {
 		elev_set_button_lamp(BUTTON_CALL_DOWN, floorDown, 1);
 	}
 }
@@ -25,4 +25,3 @@ void lightsOn() {
 void lightsOff(){
 
 }
-
