@@ -10,7 +10,7 @@ void inputElevatorQueue() {
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
 	if (floorUp != -1) {
-		elevatorQueue[1][floorUp] = 1; //Hva med tallverdi istedet for call_up? Funker dette. Vil vi ha bare
+		elevatorQueue[BUTTON_CALL_UP][floorUp] = 1; //Hva med tallverdi istedet for call_up? Funker dette. Vil vi ha bare
 		elevatorQueue[0][floorUp] = 1;              //tall eller bare kodeord??
 	}
 	if (floorDown != -1) {
