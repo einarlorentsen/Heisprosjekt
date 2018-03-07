@@ -1,13 +1,22 @@
 #pragma once
 
-//Stopper heis, åpner dørene og setter på en timer som varer i 3sekunder og oppdaterer heiskø.
-// Tror ikke kompilator liker måten denne er skrevet på
-// Hjelpevariabler for å KUN kjøre denne en gang mens timer ikke har gått ut?
+typedef enum tag_state {
+  INITIAL = 0,
+  READY = 1,
+  MOVE = 2,
+  STOP = 3,
+  DOORS_OPEN = 4,
+  DOORS_CLOSED = 5,
+  EMERGENCY_STOP = 6
+} state_t;
+
+//Stopper heis, ï¿½pner dï¿½rene og setter pï¿½ en timer som varer i 3sekunder og oppdaterer heiskï¿½.
+// Tror ikke kompilator liker mï¿½ten denne er skrevet pï¿½
+// Hjelpevariabler for ï¿½ KUN kjï¿½re denne en gang mens timer ikke har gï¿½tt ut?
 time_t stopElevator(int floor, int motorDirection);
 
 //Stoppknapp-funksjonen
 time_t stopButtonElevator();
 
-//Lukker dørene, starter i neste retning. GJØR NOE MED TIMEREN HER, HVIS IKKE FUNKER DEN IKKE!
+//Lukker dï¿½rene, starter i neste retning. GJï¿½R NOE MED TIMEREN HER, HVIS IKKE FUNKER DEN IKKE!
 bool startElevator();
-

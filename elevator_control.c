@@ -7,6 +7,31 @@
 #include "queue.h"
 #include "elev.h"
 
+state_t state;
+
+void updateState(state_t newState){
+	state = newState;
+}
+
+void initializeElevator(){
+	while (elev_get_floor_sensor_signal() == -1){
+		elev_set_motor_direction(DIRN_UP);
+	}
+	elev_set_motor_direction(DIRN_STOP))
+	updateState(READY);
+}
+
+void elevatorReady(){
+	if(inputElevatorQueue()){
+		if(checkStop(motorDirection, elev_get_floor_sensor_signal)){
+			updateState(STOP);
+		}
+		else {
+			updateState(MOVE);
+		}
+	}
+}
+
 time_t stopElevator(int floor, elev_motor_direction_t motorDirection) {
 	if (checkStop(motorDirection,floor)) {
 		elev_set_motor_direction(DIRN_STOP);
@@ -45,7 +70,7 @@ time_t stopButtonElevator() {
 	while (checkButtonStop()) {
 
 	}
-	
+
 	if (elev_get_floor_sensor_signal() != -1) {
 		timer_t seconds = setTimer(3);
 	}

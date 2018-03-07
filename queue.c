@@ -5,20 +5,26 @@
 
 static int elevatorQueue[TYPE_BUTTON][N_FLOORS] = { { 0 } };
 
-void inputElevatorQueue() {
+bool inputElevatorQueue() {
+	bool buttonPushed = false;
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
 	if (floorUp != -1) {
 		elevatorQueue[BUTTON_CALL_UP][floorUp] = 1;
+		buttonPushed = true;
 	}
 	if (floorDown != -1) {
 		elevatorQueue[BUTTON_CALL_DOWN][floorDown] = 1;
+		buttonPushed = true;
 	}
 	if (buttonCommand != -1) {
 		elevatorQueue[BUTTON_COMMAND][buttonCommand] = 1;
+		buttonPushed = true;
 	}
+	return buttonPushed;
 }
+
 
 void updateElevatorQueueAfterStop(int floor) {
 	elevatorQueue[BUTTON_CALL_DOWN][floor] = 0;
@@ -71,10 +77,10 @@ bool checkStop(elev_motor_direction_t motorDirection, int floor) {
 		break;
 	}
 }
-	
 
 
-// Vi må GET elevatorDirection FØR vi stopper og så lagre denne og jobbe med denne her.
+
+// Vi mï¿½ GET elevatorDirection Fï¿½R vi stopper og sï¿½ lagre denne og jobbe med denne her.
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor) {
 	switch (motorDirection) {
 	case(DIRN_UP):
@@ -105,6 +111,3 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 		break;
 	}
 }
-
-
-	
