@@ -9,3 +9,9 @@ elev_motor_direction_t getElevatorDirection();
 //Må også ha logikk så vi ikke kjører funksjoner mange ganger MED MINDRE lastFLoorSensed får en NY VERDI!!!
 //Dette gjelder spesielt checkstop
 int lastFloorSensed();
+
+//Åpner og setter status til aapnet
+void openDoor();
+
+//Lukker og setter status til lukket
+void closeDoor();
