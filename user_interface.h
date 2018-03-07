@@ -16,7 +16,7 @@ int checkButtonCommand();
 void obstructionLight();
 
 // Skrur på opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker på inne i heisen
-void lightsOn();
+void lightOnButtons();
 
 //Gitt at vi stopper (i main) slukk de nødvendige lysene.
-void lightsOff(int lastFloorSensed, tag_elev_motor_direction motorDirection);
+void lightsOffButtons(int lastFloorSensed, tag_elev_motor_direction motorDirection);

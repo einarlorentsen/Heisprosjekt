@@ -6,17 +6,17 @@
 //ned-retning settes til 1. Stopp i den etasjen settes også til 1. Etasjeknapper setter kun stopp til 1 i den etasjen. 
 void inputElevatorQueue();
 
-//Denne tar hensyn til alle mulige slettinger i queue når vi har stoppet og skal sette verdier til null. 
-//Med innvendige heisknapper også.
-void updateElevatorQueue(int lastFloorSensed, elev_motor_direction_t motorDirection);
+//Denne tar hensyn til alle mulige slettinger i queue NÅR VI HAR STOPPET og skal sette verdier til null. 
+//Med innvendige heisknapper også. Kjøres kun om vi ER I EN ETASJE.
+void updateElevatorQueueAfterStop(int lastFloorSensed);
 
 //Dette er en jævel av en funksjon, men den styrer ALT av stoppelogikk samtidig som den er modularisert.
 //Den tar også hensyn til diverse hendelser som kan prøve å "lure" logikken.
-int checkStop(elev_motor_direction_t motorDirection, int lastFloorSensed);
+int checkStop(elev_motor_direction_t motorDirection, int floor);
 
 
 //Småjævlig denne også. Bestemmer om heisens retning skal settes til opp, ned eller stå i ro etter at den har stoppet!
-int elevatorDirection(tag_elev_motor_direction motorDirection, int lastFloorSensed);
+elev_motor_direction_t elevatorDirection(tag_elev_motor_direction motorDirection, int floor);
 
 //Returnerer 1 hvis vi kjører opp fra en etasje og ikke skal stoppe i samme etasje senere for nedfart. Returnerer 0 hvis 
 //vi skal stoppe. Hjelpefunksjon til ligtsOff()

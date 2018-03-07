@@ -1,14 +1,17 @@
 #include "elevator_control.h"
+#include "elev.h"
 #include "queue.h"
 #include "doors.h"
 #include "timer.h"
+#include "queue.h"
+#include "elev.h"
 
-time_t stopElevator(int lastFloorSensed, int motorDirection) {
-	if (checkStop() == 1) {
+time_t stopElevator(int floor, elev_motor_direction_t motorDirection) {
+	if (checkStop(motorDirection,floor)) {
 		elev_set_motor_direction(DIRN_STOP);
 		openDoor();
 		time_t seconds = setTimer(3);
-		updateElevatorQueue(lastFloorSensed, motorDirection);
+		updateElevatorQueue(floor, motorDirection);
 	}
 	else {
 		time_t seconds = 0;
@@ -18,21 +21,11 @@ time_t stopElevator(int lastFloorSensed, int motorDirection) {
 
 
 
-int startElevator() {
-	int startet = 0;
-	if (timerFinished(stopElevator() == 1)) { //Hvis timerFinished(seconds) er 1, med andre ord hvis timer er ferdig!
-		startet = 1;
+bool startElevator() {
+	if (timerFinished(stopElevator()) { //Hvis timerFinished(seconds) er true, med andre ord hvis timer er ferdig!
 		closeDoor();
-		int retningsverdi = elevatorDirection(elevatorDirection, lastFloorSensed); //Husk å få med argumentene på denne!
-		if (retningsverdi == 1) {
-			elev_set_motor_direction(DIRN_UP);
-		}
-		else if (retningsverdi == -1) {
-			elev_set_motor_direction(DIRN_DOWN);
-		}
-		else if (retningsverdi == 0) {
-			elev_set_motor_direction(DIRN_STOP);
-		}
+		elev_set_motor_direction(elevatorDirection(elevatorDirection, lastFloorSensed));
+		return true;
 	}
-	return startet;
+	return false;
 }

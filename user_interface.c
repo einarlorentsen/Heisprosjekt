@@ -33,12 +33,12 @@ int checkButtonCommand() {
 	return -1;
 }
 
-void obstructionLight() {
+/*void obstructionLight() {
 	elev_set_stop_lamp(elev_get_stop_signal()); 
 	elev_set_stop_lamp(elev_get_obstruction_signal()); 
-}
+} */
 
-void lightsOn() {
+void lightOnButtons() {
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
@@ -53,13 +53,10 @@ void lightsOn() {
 	}
 }
 
-void lightsOff(int lastFloorSensed, tag_elev_motor_direction motorDirection) {
-	if (motorDirection == 1) {                                  //Hvis jeg beveger meg OPP FRA en etasje
-		elev_set_button_lamp(BUTTON_CALL_UP, lastFloorSensed, 0);
-		elev_set_button_lamp(BUTTON_COMMAND, lastFloorSensed, 0);
-	}
-	if (motorDirection == -1) {
-		elev_set_button_lamp(BUTTON_CALL_DOWN, lastFloorSensed, 0);
-		elev_set_button_lamp(BUTTON_COMMAND, lastFloorSensed, 0);
-	}
+void lightsOffButtons(int floor, elev_motor_direction_t motorDirection) {
+
+	elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
+	elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
+	elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
+
 }
