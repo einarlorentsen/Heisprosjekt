@@ -1,5 +1,7 @@
 #pragma once
 
+#define TYPE_BUTTON 3 //Definerer hvor mange typer knapper vi har (COMMAND, BUTTON_UP og BUTTON_DOWN), altså rader i elevatorQueue.
+
 //Sjekk om vi har lov til å endre på queue uten å innkludere den i en funksjon!
 
 //Oppdaterer heiskøen. Hvis noen har trykket opp eller ned i en etasje vil etasjeskuffen i køen i opp-eller
@@ -10,17 +12,13 @@ void inputElevatorQueue();
 //Med innvendige heisknapper også. Kjøres kun om vi ER I EN ETASJE.
 void updateElevatorQueueAfterStop(int lastFloorSensed);
 
+//Setter alle verdier i køen til 0
+void emptyElevatorQueue();
+
 //Dette er en jævel av en funksjon, men den styrer ALT av stoppelogikk samtidig som den er modularisert.
 //Den tar også hensyn til diverse hendelser som kan prøve å "lure" logikken.
 int checkStop(elev_motor_direction_t motorDirection, int floor);
 
 
 //Småjævlig denne også. Bestemmer om heisens retning skal settes til opp, ned eller stå i ro etter at den har stoppet!
-elev_motor_direction_t elevatorDirection(tag_elev_motor_direction motorDirection, int floor);
-
-//Returnerer 1 hvis vi kjører opp fra en etasje og ikke skal stoppe i samme etasje senere for nedfart. Returnerer 0 hvis 
-//vi skal stoppe. Hjelpefunksjon til ligtsOff()
-/*
-int queueLightsOff(int motorDirection, int lastFloorSensed);
-
-*/
+elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor);

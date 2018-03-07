@@ -5,6 +5,9 @@
 // Hjelpevariabler for å KUN kjøre denne en gang mens timer ikke har gått ut?
 time_t stopElevator(int floor, int motorDirection);
 
+//Stoppknapp-funksjonen
+time_t stopButtonElevator();
 
 //Lukker dørene, starter i neste retning. GJØR NOE MED TIMEREN HER, HVIS IKKE FUNKER DEN IKKE!
 bool startElevator();
+

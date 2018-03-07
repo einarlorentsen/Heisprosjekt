@@ -11,12 +11,11 @@ int checkFloorButtonDown();
 // Sjekker om etasjeknappene trykkes. Etasjen på etasjeknappen som er trykket. 
 int checkButtonCommand();
 
-// Setter stopplys hvis stoppknapp trykkes og setter obstruksjonslys hvis obstruksjon
-// Boer ikke dette være 2 funksjoner?? Og husk å kunne slukke dem også.
-void obstructionLight();
+//Sjekker om stoppknapp er trykket ned.
+bool checkButtonStop();
 
 // Skrur på opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker på inne i heisen
 void lightOnButtons();
 
-//Gitt at vi stopper (i main) slukk de nødvendige lysene.
-void lightsOffButtons(int lastFloorSensed, tag_elev_motor_direction motorDirection);
+//Gitt at vi stopper (i main) slukk alle TYPE_BUTTONS lys i hver etasje.
+void lightsOffButtons(int floor);
