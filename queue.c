@@ -5,22 +5,22 @@
 
 static int elevatorQueue[TYPE_BUTTON][N_FLOORS] = { { 0 } };
 
-bool inputElevatorQueue() {
-	bool buttonPushed = false;
+int inputElevatorQueue() {
+	int buttonPushed = 0;
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
 	if (floorUp != -1) {
 		elevatorQueue[BUTTON_CALL_UP][floorUp] = 1;
-		buttonPushed = true;
+		buttonPushed = 1;
 	}
 	if (floorDown != -1) {
 		elevatorQueue[BUTTON_CALL_DOWN][floorDown] = 1;
-		buttonPushed = true;
+		buttonPushed = 1;
 	}
 	if (buttonCommand != -1) {
 		elevatorQueue[BUTTON_COMMAND][buttonCommand] = 1;
-		buttonPushed = true;
+		buttonPushed = 1;
 	}
 	return buttonPushed;
 }
@@ -40,40 +40,40 @@ void emptyElevatorQueue() {
 	}
 }
 
-bool checkStop(elev_motor_direction_t motorDirection, int floor) {
+int checkStop(elev_motor_direction_t motorDirection, int floor) {
 	switch (motorDirection) {
 	case(DIRN_UP):
 		if (elevatorQueue[BUTTON_CALL_UP][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 3) {
-			return true;
+			return 1;
 		}
 		else if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1) {
 			for (int i = floor; i < N_FLOORS; i++) {                          // og du vil ned, selv om heisretning er opp
 				if (i != floor && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)) {
-					return false;
+					return 0;
 				}
 				if (i == N_FLOORS - 1) { //Retning opp, men vil ned. Hvis ingen bestilling over oss - stopp.
-					return true;
+					return 0;
 				}
 			}
 		}
 		break;
 	case(DIRN_DOWN):
 		if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 0) {
-			return true;
+			return 1;
 		}
 		else if (elevatorQueue[BUTTON_CALL_UP][floor] == 1) { //Sjekker om ingen under deg har trykket stopp
 			for (int k = floor; k > -1; k--) {                           //og du vil opp, selv om heisretning er ned.
 				if (k != floor && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
-					return false;
+					return 0;
 				}
 				if (k == 0) {
-					return true;
+					return 0;
 				}
 			}
 		}
 		break;
 	default:
-		return false;
+		return 0;
 		break;
 	}
 }

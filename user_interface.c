@@ -33,7 +33,7 @@ int checkButtonCommand() {
 	return -1;
 }
 
-bool checkButtonStop() {
+int checkButtonStop() {
 	return elev_get_stop_signal(void);
 }
 
