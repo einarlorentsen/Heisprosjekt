@@ -5,24 +5,19 @@
 
 static int elevatorQueue[TYPE_BUTTON][N_FLOORS] = { { 0 } };
 
-int inputElevatorQueue() {
-	int buttonPushed = 0;
+void inputElevatorQueue() {
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
 	if (floorUp != -1) {
 		elevatorQueue[BUTTON_CALL_UP][floorUp] = 1;
-		buttonPushed = 1;
 	}
 	if (floorDown != -1) {
 		elevatorQueue[BUTTON_CALL_DOWN][floorDown] = 1;
-		buttonPushed = 1;
 	}
 	if (buttonCommand != -1) {
 		elevatorQueue[BUTTON_COMMAND][buttonCommand] = 1;
-		buttonPushed = 1;
 	}
-	return buttonPushed;
 }
 
 
@@ -80,7 +75,7 @@ int checkStop(elev_motor_direction_t motorDirection, int floor) {
 
 
 
-// Vi m� GET elevatorDirection F�R vi stopper og s� lagre denne og jobbe med denne her.
+// Hjelpefunksjon, sier hvilken retning vi skal i etter vi har stoppet
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor) {
 	switch (motorDirection) {
 	case(DIRN_UP):
@@ -107,7 +102,25 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 			}
 		}
 
-	default: return DIRN_STOP;
-		break;
+	default:
+	return DIRN_STOP; //ERROR
+	break;
 	}
+}
+
+//NY
+void checkQueue(){
+	for(int i = 0; i < TYPE_BUTTON ; i++){
+		for (int k = 0; k < N_FLOORS ; k++){
+			if (elevatorQueue[i][k] == 1){
+				 if(k = elev_get_floor_sensor_signal()){
+					 updateState(STOP);
+				 }
+				 else {
+					 updateState(MOVE);
+				 }
+			}
+		}
+	}
+	return 0;
 }

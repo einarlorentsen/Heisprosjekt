@@ -23,7 +23,7 @@ void initializeElevator(){
 
 void elevatorReady(){
 	if(inputElevatorQueue()){
-		if(checkStop(motorDirection, elev_get_floor_sensor_signal)){
+		if(checkStop(motorDirection, elev_get_floor_sensor_signal()){
 			updateState(STOP);
 		}
 		else {
@@ -32,29 +32,21 @@ void elevatorReady(){
 	}
 }
 
-time_t stopElevator(int floor, elev_motor_direction_t motorDirection) {
-	if (checkStop(motorDirection,floor)) {
+void stopElevator(int floor, elev_motor_direction_t motorDirection) {
 		elev_set_motor_direction(DIRN_STOP);
 		openDoor();
-		time_t seconds = setTimer(3);
 		updateElevatorQueue(floor, motorDirection);
+		lightsOffButtons();
+		updateState(DOORS_OPEN);
 	}
-	else {
-		time_t seconds = 0;
-	}
-	return seconds;
-}
 
 
 
-bool startElevator(elev_motor_direction_t motorDirection, int lastFloorSensed) {
-	if (timerFinished(stopElevator()) { //Hvis timerFinished(seconds) er true, med andre ord hvis timer er ferdig!
+
+void moveElevator(elev_motor_direction_t motorDirection, int lastFloorSensed) {
 		closeDoor();
 		elev_set_motor_direction(elevatorDirection(motorDirection, lastFloorSensed));
-		return true;
 	}
-	return false;
-}
 
 time_t stopButtonElevator() {
 	time_t seconds = 0;

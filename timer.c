@@ -9,12 +9,12 @@ time_t setTimer(int setTime) {
 }
 
 
-bool timerFinished(time_t seconds){
+int timerFinished(time_t seconds){
 	time_t presentTime = (time(NULL));
 	if (seconds - presentTime == 0) {
-		return true;
+		return 1;
 	}
 	else {
-		return false;
+		return 0;
 	}
 }
