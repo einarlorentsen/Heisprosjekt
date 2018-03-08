@@ -9,7 +9,9 @@
 
 #include <stdio.h>
 
-
+void updateState(state_t newState){
+	state = newState;
+}
 
 
 //Statevariable
@@ -24,6 +26,9 @@ void stateMachine(){
   inputElevatorQueue();
   lightOnButtons();
   lastFloorSensed = lastFloorSensed(lastFloorSensed);
+	if(checkButtonStop()){
+		updateState(EMERGENCY_STOP);
+	}
 
   switch (state) {
     case (READY):
@@ -37,12 +42,12 @@ void stateMachine(){
       motorDirection = elevatorDirection(motorDirection,floor);
     }
     if (checkstop(motorDirection, lastFloorSensed) == 1){
-      updateState(STOP);
+      updateState(ELEV_STOP);
     }
 
     break;
 
-    case (STOP):
+    case (ELEV_STOP):
     elevatorMoving = 0;
     stopElevator(floor,motorDirection);
     break;

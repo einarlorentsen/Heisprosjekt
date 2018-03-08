@@ -1,5 +1,7 @@
 #pragma once
 
+#include "elev.h"
+
 #define TYPE_BUTTON 3 //Definerer hvor mange typer knapper vi har (COMMAND, BUTTON_UP og BUTTON_DOWN), alts� rader i elevatorQueue.
 
 //Sjekk om vi har lov til � endre p� queue uten � innkludere den i en funksjon!

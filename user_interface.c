@@ -1,6 +1,6 @@
 #include "user_interface.h"
 #include "elev.h"
-#include "elevator"
+#include "elevator.h"
 #include "queue.h"
 
 int checkFloorButtonUp() {
@@ -34,7 +34,8 @@ int checkButtonCommand() {
 }
 
 int checkButtonStop() {
-	return elev_get_stop_signal(void);
+	int pushedStopButton = elev_get_stop_signal();
+	return pushedStopButton;
 }
 
 void lightOnButtons() {

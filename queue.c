@@ -2,6 +2,8 @@
 #include "elev.h"
 #include "user_interface.h"
 #include "elevator.h"
+#include "elevator_control.h"
+#include "fsm.h"
 
 static int elevatorQueue[TYPE_BUTTON][N_FLOORS] = { { 0 } };
 
@@ -101,10 +103,13 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 				return DIRN_UP;
 			}
 		}
-
+		break;
+	case(DIRN_STOP):
+		return DIRN_STOP;
+		break;
 	default:
-	return DIRN_STOP; //ERROR
-	break;
+		return DIRN_STOP; //ERROR
+		break;
 	}
 }
 
@@ -113,8 +118,8 @@ void checkQueue(){
 	for(int i = 0; i < TYPE_BUTTON ; i++){
 		for (int k = 0; k < N_FLOORS ; k++){
 			if (elevatorQueue[i][k] == 1){
-				 if(k = elev_get_floor_sensor_signal()){
-					 updateState(STOP);
+				 if(k == elev_get_floor_sensor_signal()){
+					 updateState(ELEV_STOP);
 				 }
 				 else {
 					 updateState(MOVE);
@@ -122,5 +127,4 @@ void checkQueue(){
 			}
 		}
 	}
-	return 0;
 }

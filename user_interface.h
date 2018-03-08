@@ -8,13 +8,13 @@ int checkFloorButtonUp();
 //Brukes i andre funksjoner
 int checkFloorButtonDown();
 
-// Sjekker om etasjeknappene trykkes. Etasjen på etasjeknappen som er trykket. 
+// Sjekker om etasjeknappene trykkes. Etasjen pï¿½ etasjeknappen som er trykket.
 int checkButtonCommand();
 
 //Sjekker om stoppknapp er trykket ned.
-bool checkButtonStop();
+int checkButtonStop();
 
-// Skrur på opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker på inne i heisen
+// Skrur pï¿½ opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker pï¿½ inne i heisen
 void lightOnButtons();
 
 //Gitt at vi stopper (i main) slukk alle TYPE_BUTTONS lys i hver etasje.
