@@ -8,5 +8,3 @@ void openDoor();
 
 //Lukker og setter status til lukket
 void closeDoor();
-
-int lastFloorSensed(int floor);

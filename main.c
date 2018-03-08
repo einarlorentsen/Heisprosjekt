@@ -1,6 +1,6 @@
 #include "io.h"
-#include "channels.h"'
-#include "elev.h"'
+#include "channels.h"
+#include "elev.h"
 #include "queue.h"
 #include "elevator.h"
 #include "elevator_control.h"
@@ -22,9 +22,10 @@ int main() {
 
 
 
-  initializeElevator();
+
 
     while (1) {
+      
         stateMachine();
 
         // Stop elevator and exit program if the stop button is pressed
@@ -33,6 +34,6 @@ int main() {
             break;
         }
 
-    return 0;
+    return 1;
   }
 }

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "timer.h"
-
+#include "fsm.h"
 
 time_t setTimer(int setTime) {
 	time_t seconds = (time(NULL)+setTime);

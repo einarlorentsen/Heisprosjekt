@@ -12,4 +12,6 @@ typedef enum tag_state {
 
 void updateState(state_t newState);
 
+void initializeElevator();
+
 void stateMachine();

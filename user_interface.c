@@ -2,6 +2,7 @@
 #include "elev.h"
 #include "elevator.h"
 #include "queue.h"
+#include "fsm.h"
 
 int checkFloorButtonUp() {
 	for (int i = 0; i < N_FLOORS - 1; i++) {

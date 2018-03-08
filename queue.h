@@ -26,4 +26,4 @@ int checkStop(elev_motor_direction_t motorDirection, int floor);
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor);
 
 
-void checkQueue();
+int checkQueue();
