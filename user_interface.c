@@ -34,10 +34,11 @@ int checkButtonCommand() {
 	return -1;
 }
 
-int checkButtonStop() {
+/*int checkButtonStop() {
 	int pushedStopButton = elev_get_stop_signal();
+	floorLight(lastFloorSensed);
 	return pushedStopButton;
-}
+}*/
 
 void lightOnButtons() {
 	int floorUp = checkFloorButtonUp();
@@ -55,12 +56,33 @@ void lightOnButtons() {
 }
 
 void lightsOffButtons(int floor) {
-
-	elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
-	elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
+	if (floor < 3){
+		elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
+	}
+	if (floor > 0){
+		elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
+	}
 	elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
 }
 
 void floorLight(int floor){
-	elev_set_floor_indicator(floor);
+	if (floor != -1){
+		elev_set_floor_indicator(floor);
+	}
+}
+
+void stopButtonElevator() {
+	elev_set_stop_lamp(1);
+	elev_set_motor_direction(DIRN_STOP);
+	emptyElevatorQueue();
+	for (int i = 0; i < N_FLOORS; i++) {
+		lightsOffButtons(i);
+	}
+	if (elev_get_floor_sensor_signal() != -1) {
+		openDoor();
+	}
+	/*
+	while (checkButtonStop()) {
+
+	}*/
 }

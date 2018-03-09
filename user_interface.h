@@ -19,3 +19,9 @@ void lightOnButtons();
 
 //Gitt at vi stopper (i main) slukk alle TYPE_BUTTONS lys i hver etasje.
 void lightsOffButtons(int floor);
+
+//Stoppknapp-funksjonalitet
+void stopButtonElevator();
+
+//Setter etasjeindikator-lysene
+void floorLight(int lastFloorSensed);

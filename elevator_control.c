@@ -23,20 +23,3 @@ void moveElevator(elev_motor_direction_t motorDirection, int lastFloorSensed) {
 		closeDoor();
 		elev_set_motor_direction(elevatorDirection(motorDirection, lastFloorSensed));
 	}
-
-void stopButtonElevator() {
-	elev_set_stop_lamp(1);
-	elev_set_motor_direction(DIRN_STOP);
-	emptyElevatorQueue();
-	for (int i = 0; i < N_FLOORS; i++) {
-		lightsOffButtons(i);
-	}
-	if (elev_get_floor_sensor_signal() != -1) {
-		openDoor();
-	}
-	while (checkButtonStop()) {
-
-	}
-
-
-}

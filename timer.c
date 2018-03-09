@@ -10,8 +10,11 @@ time_t setTimer(int setTime) {
 
 
 int timerFinished(time_t seconds){
+
 	time_t presentTime = (time(NULL));
-	if (seconds - presentTime == 0) {
+	//printf("seconds %i , presentTime %i , equal %i \n ",seconds, presentTime, seconds ==presentTime);
+	if ((seconds == presentTime)  ) {
+		printf("return 1\n");
 		return 1;
 	}
 	else {

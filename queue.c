@@ -7,6 +7,15 @@
 
 static int elevatorQueue[TYPE_BUTTON][N_FLOORS] = { { 0 } };
 
+void printQueue(){
+	for (int i = 0; i < TYPE_BUTTON; i++) {
+		for (int k = 0; k < N_FLOORS; k++) {
+			printf("%d", elevatorQueue[i][k]);
+		}
+		printf("\n");
+	}
+}
+
 void inputElevatorQueue() {
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
@@ -36,6 +45,7 @@ int checkQueue(){
 			}
 		}
 	}
+	return -1;
 }
 
 
@@ -54,9 +64,15 @@ void emptyElevatorQueue() {
 }
 
 int checkStop(elev_motor_direction_t motorDirection, int floor) {
+	printf("Går inn i checkStop\n");
 	switch (motorDirection) {
-		case(DIRN_UP): {
+		case(DIRN_UP):
+			/*printf("Retningen er opp, og vi går inn i switchen\n");
+			printf("elevatorQueue[BUTTON_CALL_UP][floor] = %i\n", elevatorQueue[BUTTON_CALL_UP][floor]);
+			printf("elevatorQueue[BUTTON_COMMAND][floor] = %i\n", elevatorQueue[BUTTON_COMMAND][floor]);
+			printf("floor = %i\n", floor);
 			if (elevatorQueue[BUTTON_CALL_UP][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 3) {
+				printf("På vei opp. Noen skal opp, command eller øverste\n");
 				return 1;
 			}
 			else if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1) {
@@ -65,14 +81,17 @@ int checkStop(elev_motor_direction_t motorDirection, int floor) {
 						return 0;
 					}
 					if (i == N_FLOORS - 1) { //Retning opp, men vil ned. Hvis ingen bestilling over oss - stopp.
-						return 0;
+						printf("På vei opp. Bestilling under oss\n");
+						return 1;
 					}
 				}
 			}
+			*/
 			break;
-		}
-		case(DIRN_DOWN): {
+		/*case(DIRN_DOWN):
+			printf("retningen er ned og vi går inn i switchen\n");
 			if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 0) {
+				printf("På vei ned. Noen skal ned, command eller nederste\n");
 				return 1;
 			}
 			else if (elevatorQueue[BUTTON_CALL_UP][floor] == 1) { //Sjekker om ingen under deg har trykket stopp
@@ -81,17 +100,19 @@ int checkStop(elev_motor_direction_t motorDirection, int floor) {
 						return 0;
 					}
 					if (k == 0) {
-						return 0;
+						printf("På vei ned.  Bestilling over oss\n");
+						return 1;
 					}
 				}
 			}
 			break;
-		}
-		default: {
+			*/
+		default:
+			printf("Vi er i default i switch\n");
 			return 0;
 			break;
-		}
 	}
+
 }
 
 
@@ -99,7 +120,7 @@ int checkStop(elev_motor_direction_t motorDirection, int floor) {
 // Hjelpefunksjon, sier hvilken retning vi skal i etter vi har stoppet
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor) {
 	switch (motorDirection) {
-		case(DIRN_UP): {
+		case(DIRN_UP):
 			for (int i = floor; i < N_FLOORS; i++) {
 				if (i != floor && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)) {
 					return DIRN_UP;
@@ -111,8 +132,7 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 				}
 			}
 			break;
-		}
-		case(DIRN_DOWN): {
+		case(DIRN_DOWN):
 			for (int k = floor; k > -1; k--) {
 				if (k != floor && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
 					return DIRN_DOWN;
@@ -124,12 +144,8 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 				}
 			}
 			break;
-		}
-		case(DIRN_STOP): {
+		default:{
 			return DIRN_STOP;
-			break;
-		default:
-			return DIRN_STOP; //ERROR
 			break;
 		}
 	}
