@@ -93,7 +93,10 @@ void stateMachine(){
 				}
         
       }
-			int shouldIStop = checkStop(motorDirection, lastFloorSensed);
+			int shouldIStop = 0;
+			if(elev_get_floor_sensor_signal() != -1){
+				shouldIStop = checkStop(motorDirection, lastFloorSensed);
+			}
       if (shouldIStop == 1){
         updateState(ELEV_STOP);
       }
@@ -118,7 +121,9 @@ void stateMachine(){
         seconds = setTimer(3);
         timerFlag = 1;
       }
+
 			difference(seconds);
+			
       if((timerFlag == 1) && (timerFinished(seconds) == 1)){
 				printf("Timeren er ferdig");
         timerFlag = 0;

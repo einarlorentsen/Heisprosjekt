@@ -49,6 +49,16 @@ void lightOnButtons() {
 	}
 }
 
+void noButtonSignalInFloor(int floor){
+	int floorUp = checkFloorButtonUp();
+	int floorDown = checkFloorButtonDown();
+	int buttonCommand = checkButtonCommand();
+	if (floorUp == floor || floorDown == floor || buttonCommand == floor){
+		return 0;
+	}
+	return 1;
+}
+
 void lightsOffButtons(int floor) {
 	if (floor < 3 && floor > -1){
 		elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
@@ -85,3 +95,5 @@ void stopButtonElevator() {
         }
 	}
 }
+
+

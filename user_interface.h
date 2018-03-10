@@ -14,6 +14,9 @@ int checkButtonCommand();
 // Skrur p� opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker p� inne i heisen
 void lightOnButtons();
 
+// Hvis vi holder inn en knapp i samme etasje returnerer vi 0. Hvis ikke 1.
+void noButtonSignalInFloor(int floor);
+
 //Gitt at vi stopper (i main) slukk alle TYPE_BUTTONS lys i hver etasje.
 void lightsOffButtons(int floor);
 
