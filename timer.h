@@ -6,3 +6,5 @@ time_t setTimer(int time);
 
 //Sjekker om timer er ferdig
 int timerFinished(time_t seconds);
+
+void difference(time_t seconds);

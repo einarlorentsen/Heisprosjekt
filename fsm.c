@@ -9,6 +9,7 @@
 #include "fsm.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 //Statevariable
 elev_motor_direction_t motorDirection = DIRN_UP;
@@ -55,16 +56,17 @@ void stateMachine(){
 //Statemachine
   switch (state) {
 		case (INITIAL): {
+			printf("INITIAL state:");
 				initializeElevator();
 				break;
 		}
 
     case (READY): {
+			printf("ready state\n");
       int queueCheck = checkQueue();
 			if((queueCheck == 0 || queueCheck == 1) && emergencyStopFlag == 1){
 				updateState(MOVE);
 			}
-			printf("ready state\n");
 			if(queueCheck == 1){
 				updateState(MOVE);
 			}
@@ -72,36 +74,27 @@ void stateMachine(){
 				updateState(ELEV_STOP);
 			}
       break;
-
     }
 
     case (MOVE): {
 			printf("MOVE state: \n");
       if(elevatorMoving == 0){
-				printf("VI ER HER");
 				if (emergencyStopFlag == 1){
 					elev_set_motor_direction(elevatorResetAfterEmergency(motorDirection,lastFloorSensed));
 					emergencyStopFlag = 0;
 					elevatorMoving = 1;
-					printf("Vi beveger oss\n");
         	motorDirection = elevatorResetAfterEmergency(motorDirection,lastFloorSensed);
 					lastFloorSensed = -1;
 				}
 				else{
 					moveElevator(motorDirection, lastFloorSensed);
 					elevatorMoving = 1;
-					printf("Vi beveger oss\n");
 					motorDirection = elevatorDirection(motorDirection,lastFloorSensed);
 				}
         
       }
 			int shouldIStop = checkStop(motorDirection, lastFloorSensed);
       if (shouldIStop == 1){
-				printf("Motorretning: %i\n",motorDirection);
-				updateElevatorQueueAfterStop(lastFloorSensed);
-				printf("HER SJEKER VI OM VI SKAL STOPPE (1 eller 0) (checkStop): %d\n",checkStop(motorDirection, lastFloorSensed));
-				printQueue();
-				printf("Siste etasjen vi har merket: %i\n",lastFloorSensed + 1);
         updateState(ELEV_STOP);
       }
 
@@ -109,23 +102,26 @@ void stateMachine(){
     }
 
     case (ELEV_STOP): {
-			printf("stopper heisen\n");
+			printf("ELEV_STOP state:\n");
       elevatorMoving = 0;
+			updateElevatorQueueAfterStop(lastFloorSensed);
       stopElevator(lastFloorSensed,motorDirection);
 			updateState(DOORS_OPEN);
       break;
     }
 
     case (DOORS_OPEN): {
-		openDoor();
-			//printf("DOORS_OPEN_STATE\n");
+			printf("DOORS_OPEN_STATE\n");
+			openDoor();
       if(timerFlag == 0){
+				printf("Setter timeren \n");
         seconds = setTimer(3);
         timerFlag = 1;
       }
+			difference(seconds);
       if((timerFlag == 1) && (timerFinished(seconds) == 1)){
+				printf("Timeren er ferdig");
         timerFlag = 0;
-				printf("åpner dørene\n" );
         updateState(DOORS_CLOSED);
       }
       break;
@@ -148,7 +144,6 @@ void stateMachine(){
 			}
 			else {
 				updateState(ELEV_STOP);
-				printf("EMERGENCY SETTER STOPP");
 			}
     break;
 	}
