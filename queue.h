@@ -14,7 +14,7 @@ void updateElevatorQueueAfterStop(int lastFloorSensed);
 void emptyElevatorQueue();
 
 //Sjekker om vi skal stoppe i en etasje. Returnerer 1 hvis vi skal stoppe. 0 Hvis ikke.
-int checkStop(elev_motor_direction_t motorDirection, int floor);
+int checkStop(elev_motor_direction_t dir, int floor);
 
 
 //Setter retning på heisen til DIRN_UP eller DIRN_DOWN etter at vi har stoppet og oppdaget en ny bestilling.

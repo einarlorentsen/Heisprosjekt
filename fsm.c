@@ -33,7 +33,11 @@ void initializeElevator() {
 	printf("initialized\n");
 }
 
-
+void checkButtonStop(){
+	if(elev_get_stop_signal() == 1){
+		updateState(EMERGENCY_STOP);
+	}
+}
 
 void stateMachine(){
 
@@ -43,11 +47,6 @@ void stateMachine(){
 	}
 
   floorLight(lastFloorSensed);
-
-	/*if(checkButtonStop()){
-		updateStairectionte(EMERGENCY_STOP);
-	}
-	*/
 
 
 
@@ -102,6 +101,7 @@ void stateMachine(){
     }
 
     case (DOORS_OPEN): {
+		openDoor();
 			//printf("DOORS_OPEN_STATE\n");
       if(timerFlag == 0){
         seconds = setTimer(3);

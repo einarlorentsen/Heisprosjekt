@@ -16,5 +16,8 @@ void updateState(state_t newState);
 //Initialiserer heisen. Setter state til READY når ferdig initialisert.
 void initializeElevator();
 
+//Sender oss til EMERGENCY_STATE hvis stoppknapp trykkes
+void checkButtonStop();
+
 //Funksjon som kjører statemaskinen
 void stateMachine();

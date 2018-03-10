@@ -34,12 +34,6 @@ int checkButtonCommand() {
 	return -1;
 }
 
-/*int checkButtonStop() {
-	int pushedStopButton = elev_get_stop_signal();
-	floorLight(lastFloorSensed);
-	return pushedStopButton;
-}*/
-
 void lightOnButtons() {
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
@@ -81,8 +75,11 @@ void stopButtonElevator() {
 	if (elev_get_floor_sensor_signal() != -1) {
 		openDoor();
 	}
-	/*
-	while (checkButtonStop()) {
-
-	}*/
+	
+	while(1) {
+		if (elev_get_stop_signal() != 1) {
+            elev_set_stop_lamp(0);
+            break;
+        }
+	}
 }

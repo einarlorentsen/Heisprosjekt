@@ -11,9 +11,6 @@ int checkFloorButtonDown();
 // Sjekker om etasjeknappene trykkes. Etasjen p� etasjeknappen som er trykket.
 int checkButtonCommand();
 
-//Sjekker om stoppknapp er trykket ned.
-int checkButtonStop();
-
 // Skrur p� opp og ned-lys i den etasjen der opp og ned knappene er trykt og i den etasjen vi trykker p� inne i heisen
 void lightOnButtons();
 
