@@ -65,51 +65,51 @@ void emptyElevatorQueue() {
 
 int checkStop(elev_motor_direction_t motorDirection, int floor) {
 	printf("Går inn i checkStop\n");
+	int stop = 0;
 	switch (motorDirection) {
 		case(DIRN_UP):
-			/*printf("Retningen er opp, og vi går inn i switchen\n");
+			printf("Retningen er opp, og vi går inn i switchen\n");
 			printf("elevatorQueue[BUTTON_CALL_UP][floor] = %i\n", elevatorQueue[BUTTON_CALL_UP][floor]);
 			printf("elevatorQueue[BUTTON_COMMAND][floor] = %i\n", elevatorQueue[BUTTON_COMMAND][floor]);
 			printf("floor = %i\n", floor);
 			if (elevatorQueue[BUTTON_CALL_UP][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 3) {
 				printf("På vei opp. Noen skal opp, command eller øverste\n");
-				return 1;
+				stop = 1;
 			}
 			else if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1) {
 				for (int i = floor; i < N_FLOORS; i++) {                          // og du vil ned, selv om heisretning er opp
 					if (i != floor && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)) {
-						return 0;
+					stop = 0;
 					}
 					if (i == N_FLOORS - 1) { //Retning opp, men vil ned. Hvis ingen bestilling over oss - stopp.
 						printf("På vei opp. Bestilling under oss\n");
-						return 1;
+						stop = 1;
 					}
 				}
 			}
-			*/
-			break;
-		/*case(DIRN_DOWN):
+			return stop;
+			
+		case(DIRN_DOWN):
 			printf("retningen er ned og vi går inn i switchen\n");
 			if (elevatorQueue[BUTTON_CALL_DOWN][floor] == 1 || elevatorQueue[BUTTON_COMMAND][floor] == 1 || floor == 0) {
 				printf("På vei ned. Noen skal ned, command eller nederste\n");
-				return 1;
+				return stop = 1;
 			}
 			else if (elevatorQueue[BUTTON_CALL_UP][floor] == 1) { //Sjekker om ingen under deg har trykket stopp
 				for (int k = floor; k > -1; k--) {                           //og du vil opp, selv om heisretning er ned.
 					if (k != floor && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
-						return 0;
+						stop = 0;
 					}
 					if (k == 0) {
 						printf("På vei ned.  Bestilling over oss\n");
-						return 1;
+						stop = 1;
 					}
 				}
 			}
-			break;
-			*/
+			return stop;
 		default:
 			printf("Vi er i default i switch\n");
-			return 0;
+			return stop;
 			break;
 	}
 
