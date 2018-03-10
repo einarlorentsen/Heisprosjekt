@@ -49,7 +49,7 @@ void lightOnButtons() {
 	}
 }
 
-void noButtonSignalInFloor(int floor){
+int noButtonSignalInFloor(int floor){
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
