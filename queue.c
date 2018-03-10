@@ -50,6 +50,9 @@ int checkQueue(){
 
 
 void updateElevatorQueueAfterStop(int floor) {
+	if(floor == -1){
+		return;
+	}
 	elevatorQueue[BUTTON_CALL_DOWN][floor] = 0;
 	elevatorQueue[BUTTON_CALL_UP][floor] = 0;
 	elevatorQueue[BUTTON_COMMAND][floor] = 0;
@@ -64,6 +67,9 @@ void emptyElevatorQueue() {
 }
 
 int checkStop(elev_motor_direction_t motorDirection, int floor) {
+	if (floor == -1){
+		return 0;
+	}
 	printf("Går inn i checkStop\n");
 	int stop = 0;
 	switch (motorDirection) {
@@ -119,6 +125,9 @@ int checkStop(elev_motor_direction_t motorDirection, int floor) {
 
 // Hjelpefunksjon, sier hvilken retning vi skal i etter vi har stoppet
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor) {
+	if(floor == -1){
+		exit(0);
+	}
 	switch (motorDirection) {
 		case(DIRN_UP):
 			for (int i = floor; i < N_FLOORS; i++) {
@@ -149,4 +158,27 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 			break;
 		}
 	}
+}
+
+elev_motor_direction_t elevatorResetAfterEmergency(elev_motor_direction_t motorDirection, int lastFloorSensed){
+	switch (motorDirection) {
+		case(DIRN_UP):
+			for(int i = lastFloorSensed; i < N_FLOORS; i++){
+				if (i != lastFloorSensed && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)){
+				return DIRN_UP;
+				}
+			}
+			return DIRN_DOWN;
+		case(DIRN_DOWN):
+			for (int k = lastFloorSensed; k > -1; k--) {
+				if (k != lastFloorSensed && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
+					return DIRN_DOWN;
+				}
+			}
+			return DIRN_UP;
+		default:
+			return DIRN_UP;
+
+	}
+
 }

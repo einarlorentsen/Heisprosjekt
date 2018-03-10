@@ -50,13 +50,15 @@ void lightOnButtons() {
 }
 
 void lightsOffButtons(int floor) {
-	if (floor < 3){
+	if (floor < 3 && floor > -1){
 		elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
 	}
 	if (floor > 0){
 		elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
 	}
-	elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
+	if (floor > -1){
+		elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
+	}
 }
 
 void floorLight(int floor){

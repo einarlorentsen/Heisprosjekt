@@ -17,6 +17,7 @@ state_t state = INITIAL;
 int timerFlag = 0;
 int elevatorMoving = 0;
 time_t seconds = 0;
+int emergencyStopFlag = 0;
 
 //Funksjoner
 
@@ -60,6 +61,9 @@ void stateMachine(){
 
     case (READY): {
       int queueCheck = checkQueue();
+			if((queueCheck == 0 || queueCheck == 1) && emergencyStopFlag == 1){
+				updateState(MOVE);
+			}
 			printf("ready state\n");
 			if(queueCheck == 1){
 				updateState(MOVE);
@@ -74,10 +78,22 @@ void stateMachine(){
     case (MOVE): {
 			printf("MOVE state: \n");
       if(elevatorMoving == 0){
-        moveElevator(motorDirection, lastFloorSensed);
-        elevatorMoving = 1;
-				printf("Vi beveger oss\n");
-        motorDirection = elevatorDirection(motorDirection,lastFloorSensed);
+				printf("VI ER HER");
+				if (emergencyStopFlag == 1){
+					elev_set_motor_direction(elevatorResetAfterEmergency(motorDirection,lastFloorSensed));
+					emergencyStopFlag = 0;
+					elevatorMoving = 1;
+					printf("Vi beveger oss\n");
+        	motorDirection = elevatorResetAfterEmergency(motorDirection,lastFloorSensed);
+					lastFloorSensed = -1;
+				}
+				else{
+					moveElevator(motorDirection, lastFloorSensed);
+					elevatorMoving = 1;
+					printf("Vi beveger oss\n");
+					motorDirection = elevatorDirection(motorDirection,lastFloorSensed);
+				}
+        
       }
 			int shouldIStop = checkStop(motorDirection, lastFloorSensed);
       if (shouldIStop == 1){
@@ -125,7 +141,9 @@ void stateMachine(){
     case (EMERGENCY_STOP): {
 			printf("EMERGENCY!!!\n");
 			stopButtonElevator();
+			elevatorMoving = 0;
 			if(elev_get_floor_sensor_signal() == -1){
+				emergencyStopFlag = 1;
 				updateState(READY);
 			}
 			else {

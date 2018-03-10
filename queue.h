@@ -20,5 +20,8 @@ int checkStop(elev_motor_direction_t dir, int floor);
 //Setter retning på heisen til DIRN_UP eller DIRN_DOWN etter at vi har stoppet og oppdaget en ny bestilling.
 elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, int floor);
 
-//Sjekker om vi har bestillinger i elevatorQueue.
+//Sjekker om vi har bestillinger i elevatorQueue. 0 hvis ikke stopp, 1 hvis stopp.
 int checkQueue();
+
+//Spesialfunksjon for å starte heis etter nødstopp når den er mellom etasjer.
+elev_motor_direction_t elevatorResetAfterEmergency(elev_motor_direction_t motorDirection, int lastFloorSensed);
