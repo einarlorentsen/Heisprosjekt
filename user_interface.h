@@ -15,7 +15,7 @@ int checkButtonCommand();
 void lightOnButtons();
 
 // Hvis vi holder inn en knapp i samme etasje returnerer vi 0. Hvis ikke 1.
-int noButtonSignalInFloor(int floor);
+int checkButtonHoldInFloor(int floor);
 
 //Gitt at vi stopper (i main) slukk alle TYPE_BUTTONS lys i hver etasje.
 void lightsOffButtons(int floor);

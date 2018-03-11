@@ -49,7 +49,7 @@ void lightOnButtons() {
 	}
 }
 
-int noButtonSignalInFloor(int floor){
+int checkButtonHoldInFloor(int floor){
 	int floorUp = checkFloorButtonUp();
 	int floorDown = checkFloorButtonDown();
 	int buttonCommand = checkButtonCommand();
@@ -87,7 +87,7 @@ void stopButtonElevator() {
 	if (elev_get_floor_sensor_signal() != -1) {
 		openDoor();
 	}
-	
+
 	while(1) {
 		if (elev_get_stop_signal() != 1) {
             elev_set_stop_lamp(0);
@@ -95,5 +95,3 @@ void stopButtonElevator() {
         }
 	}
 }
-
-
