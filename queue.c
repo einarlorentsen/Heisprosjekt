@@ -17,17 +17,17 @@ void printQueue(){
 }
 
 void inputElevatorQueue() {
-	int floorUp = checkFloorButtonUp();
-	int floorDown = checkFloorButtonDown();
-	int buttonCommand = checkButtonCommand();
-	if (floorUp != -1) {
-		elevatorQueue[BUTTON_CALL_UP][floorUp] = 1;
-	}
-	if (floorDown != -1) {
-		elevatorQueue[BUTTON_CALL_DOWN][floorDown] = 1;
-	}
-	if (buttonCommand != -1) {
-		elevatorQueue[BUTTON_COMMAND][buttonCommand] = 1;
+	for (int floor = 0; floor < N_FLOORS ; floor ++){
+		for (int button = 0; button < TYPE_BUTTON; button ++){
+			if (floor == 0 && button == 1) continue;
+			if (floor == 3 && button == 0) continue;
+			if (elevatorQueue[button][floor] == 0){
+				if (elev_get_button_signal(button,floor) == 1){
+					elevatorQueue[button][floor] = 1;
+					elev_set_button_lamp(button,floor,1);
+				}
+			}
+		}
 	}
 }
 
@@ -185,5 +185,4 @@ elev_motor_direction_t elevatorResetAfterEmergency(elev_motor_direction_t motorD
 			return DIRN_UP;
 
 	}
-
 }
