@@ -20,23 +20,16 @@ int main() {
 
     printf("Press STOP button to stop elevator and exit program.\n");
 
-
-
-
-
     while (1) {
-
+      //Lytter etter input fra knapper og setter tilsvarende lys
       inputElevatorQueue();
-      lightOnButtons();
+
+      //Lytter etter stoppknapp
       checkButtonStop();
 
+      //Kjører statemaskinen heis
       stateMachine();
-
-
 
   }
   return 1;
 }
-
-
-//dette er nyeste filen!!

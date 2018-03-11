@@ -1,10 +1,8 @@
 #pragma once
 #include <time.h>
 
-//Setter timeren
+//Setter timeren i "time" sekunder
 time_t setTimer(int time);
 
 //Sjekker om timer er ferdig
 int timerFinished(time_t seconds);
-
-void difference(time_t seconds);

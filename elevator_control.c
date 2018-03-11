@@ -18,7 +18,7 @@ void stopElevator(int floor, elev_motor_direction_t motorDirection) {
 
 
 
-void moveElevator(elev_motor_direction_t motorDirection, int lastFloorSensed) {
+void moveElevator(elev_motor_direction_t motorDirection, int floor) {
 	closeDoor();
-	elev_set_motor_direction(elevatorDirection(motorDirection, lastFloorSensed));
+	elev_set_motor_direction(elevatorDirection(motorDirection, floor));
 }

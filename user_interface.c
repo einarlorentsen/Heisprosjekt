@@ -4,57 +4,14 @@
 #include "queue.h"
 #include "fsm.h"
 
-int checkFloorButtonUp() {
-	for (int i = 0; i < N_FLOORS - 1; i++) {
-		int success = elev_get_button_signal(BUTTON_CALL_UP, i);
-		if (success == 1) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-int checkFloorButtonDown() {
-	for (int i = 1; i < N_FLOORS; i++) {
-		int success = elev_get_button_signal(BUTTON_CALL_DOWN, i);
-		if (success == 1) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-int checkButtonCommand() {
-	for (int i = 0; i < N_FLOORS; i++) {
-		int success = elev_get_button_signal(BUTTON_COMMAND, i);
-		if (success == 1) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-void lightOnButtons() {
-	int floorUp = checkFloorButtonUp();
-	int floorDown = checkFloorButtonDown();
-	int buttonCommand = checkButtonCommand();
-	if (floorUp != -1) {
-		elev_set_button_lamp(BUTTON_CALL_UP, floorUp, 1);
-	}
-	if (floorDown != -1) {
-		elev_set_button_lamp(BUTTON_CALL_DOWN, floorDown, 1);
-	}
-	if (buttonCommand != -1) {
-		elev_set_button_lamp(BUTTON_COMMAND, buttonCommand, 1);
-	}
-}
 
 int checkButtonHoldInFloor(int floor){
-	int floorUp = checkFloorButtonUp();
-	int floorDown = checkFloorButtonDown();
-	int buttonCommand = checkButtonCommand();
-	if (floorUp == floor || floorDown == floor || buttonCommand == floor){
-		return 0;
+	for (int button = 0; button < TYPE_BUTTON; button ++){
+		if (floor == 0 && button == 1) continue;
+		if (floor == 3 && button == 0) continue;
+		if (elev_get_button_signal(button,floor) == 1){
+			return 0;
+		}
 	}
 	return 1;
 }
@@ -71,11 +28,6 @@ void lightsOffButtons(int floor) {
 	}
 }
 
-void floorLight(int floor){
-	if (floor != -1){
-		elev_set_floor_indicator(floor);
-	}
-}
 
 void stopButtonElevator() {
 	elev_set_stop_lamp(1);
@@ -93,5 +45,11 @@ void stopButtonElevator() {
             elev_set_stop_lamp(0);
             break;
         }
+	}
+}
+
+void floorLight(int floor){
+	if (floor != -1){
+		elev_set_floor_indicator(floor);
 	}
 }

@@ -11,14 +11,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
-//Statevariable
+//Hjelpevariable
 elev_motor_direction_t motorDirection = DIRN_UP;
 int lastFloorSensed = -1;
 state_t state = INITIAL;
-int timerFlag = 0;
 int elevatorMoving = 0;
-int sameFloorButtonHold = 0;
 time_t seconds = 0;
+
+int timerFlag = 0;
+int sameFloorButtonHoldFlag = 0;
 int emergencyStopFlag = 0;
 
 //Funksjoner
@@ -33,7 +34,6 @@ void initializeElevator() {
 	}
 	elev_set_motor_direction(DIRN_STOP);
 	updateState(READY);
-	printf("initialized\n");
 }
 
 void checkButtonStop(){
@@ -44,11 +44,12 @@ void checkButtonStop(){
 
 void stateMachine(){
 
-//Hjelpefunksjoner
+	//Lagrer forrige registrerte etasje
   if(elev_get_floor_sensor_signal() != -1 && elev_get_floor_sensor_signal() != lastFloorSensed){
 		lastFloorSensed = elev_get_floor_sensor_signal();
 	}
 
+	//Setter etasjeindikator-lys
   floorLight(lastFloorSensed);
 
 
@@ -93,10 +94,8 @@ void stateMachine(){
       }
 			int shouldIStop = 0;
 			if(elev_get_floor_sensor_signal() != -1){
-				printf("sjekker om vi skal stoppe\n");
 				shouldIStop = checkStop(motorDirection, lastFloorSensed);
 				checkStop(motorDirection,lastFloorSensed);
-				printf("shouldIStop = %i \n",shouldIStop);
 			}
       if (shouldIStop == 1){
         updateState(ELEV_STOP);
@@ -115,29 +114,25 @@ void stateMachine(){
 
     case (DOORS_OPEN): {
 			openDoor();
-			if(sameFloorButtonHold == 0 && checkButtonHoldInFloor(lastFloorSensed) == 0){
-					printf("doors open: 1 if\n");
+			if(sameFloorButtonHoldFlag == 0 && checkButtonHoldInFloor(lastFloorSensed) == 0){
 					timerFlag = 0;
-					sameFloorButtonHold = 1;
+					sameFloorButtonHoldFlag = 1;
 					updateElevatorQueueAfterStop(lastFloorSensed);
 			}
-      else if(timerFlag == 0 && sameFloorButtonHold == 1 && checkButtonHoldInFloor(lastFloorSensed) == 1){
-				printf("doors open: 2 if\n");
+      else if(timerFlag == 0 && sameFloorButtonHoldFlag == 1 && checkButtonHoldInFloor(lastFloorSensed) == 1){
 				lightsOffButtons(lastFloorSensed);
         seconds = setTimer(3);
-				sameFloorButtonHold = 0;
+				sameFloorButtonHoldFlag = 0;
         timerFlag = 1;
       }
-			else if (timerFlag == 0 && sameFloorButtonHold == 0){
-				printf("doors open: 3 if\n");
+			else if (timerFlag == 0 && sameFloorButtonHoldFlag == 0){
         seconds = setTimer(3);
         timerFlag = 1;
 			}
       if((timerFlag == 1) && (timerFinished(seconds) == 1)){
-				printf("timer finished\n");
 				lightsOffButtons(lastFloorSensed);
 				updateElevatorQueueAfterStop(lastFloorSensed);
-				sameFloorButtonHold = 0;
+				sameFloorButtonHoldFlag = 0;
         timerFlag = 0;
         updateState(DOORS_CLOSED);
       }
@@ -151,9 +146,8 @@ void stateMachine(){
   }
 
     case (EMERGENCY_STOP): {
-			printf("EMERGENCY!!!\n");
 			timerFlag = 0;
-			sameFloorButtonHold = 0;
+			sameFloorButtonHoldFlag = 0;
 			stopButtonElevator();
 			elevatorMoving = 0;
 			if(elev_get_floor_sensor_signal() == -1){
