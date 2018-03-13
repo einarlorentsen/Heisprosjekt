@@ -83,7 +83,6 @@ void stateMachine(){
 					emergencyStopFlag = 0;
 					elevatorMoving = 1;
         	motorDirection = elevatorResetAfterEmergency(motorDirection,lastFloorSensed);
-					lastFloorSensed = -1;
 				}
 				else{
 					moveElevator(motorDirection, lastFloorSensed);

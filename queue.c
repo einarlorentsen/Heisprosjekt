@@ -145,23 +145,34 @@ elev_motor_direction_t elevatorDirection(elev_motor_direction_t motorDirection, 
 }
 
 elev_motor_direction_t elevatorResetAfterEmergency(elev_motor_direction_t motorDirection, int floor){
+	printf("motorDirection: %d\n", motorDirection);
+	printf("floor: %i\n",floor);
 	switch (motorDirection) {
 		case(DIRN_UP):
 			for(int i = floor; i < N_FLOORS; i++){
-				if (i != floor && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)){
-				return DIRN_UP;
+				if ((i != floor) && (elevatorQueue[BUTTON_CALL_UP][i] == 1 || elevatorQueue[BUTTON_CALL_DOWN][i] == 1 || elevatorQueue[BUTTON_COMMAND][i] == 1)){
+					printf("1 case\n");
+					return DIRN_UP;
 				}
 			}
-			return DIRN_DOWN;
-		case(DIRN_DOWN):
-			for (int k = floor; k > -1; k--) {
-				if (k != floor && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
+			for (int j = floor; j > -1; j--){
+				if (elevatorQueue[BUTTON_CALL_UP][j] == 1 || elevatorQueue[BUTTON_CALL_DOWN][j] == 1 || elevatorQueue[BUTTON_COMMAND][j] == 1){
+					printf("2 case\n");
 					return DIRN_DOWN;
 				}
 			}
-			return DIRN_UP;
-		default:
-			return DIRN_UP;
-
+		case(DIRN_DOWN):
+			for (int k = floor; k > -1; k--) {
+				if ((k != floor) && (elevatorQueue[BUTTON_CALL_DOWN][k] == 1 || elevatorQueue[BUTTON_CALL_UP][k] == 1 || elevatorQueue[BUTTON_COMMAND][k] == 1)) {
+					printf("3 case\n");
+					return DIRN_DOWN;
+				}
+			}
+			for(int l = floor; l < N_FLOORS; l++) {
+				if (elevatorQueue[BUTTON_CALL_UP][l] == 1 || elevatorQueue[BUTTON_CALL_DOWN][l] == 1 || elevatorQueue[BUTTON_COMMAND][l] == 1){
+					printf("4 case\n");
+					return DIRN_UP;
+				}
+			}
 	}
 }
